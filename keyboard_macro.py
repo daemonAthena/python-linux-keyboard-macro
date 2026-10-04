@@ -1,4 +1,4 @@
-#! /bin/usr/python
+#! /usr/bin/python
 #from pynput import keyboard
 import os
 import keyboard
