@@ -7,9 +7,9 @@ arch=('x86_64')
 url="https://github.com/daemonAthena/python-linux-keyboard-macro"
 license=('MIT')
 depends=('python>=3.14.7') # keyboard and os should come installed with python
-makedepends=('git' 'python-poetry' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+makedepends=('git' 'python-keyboard')
 install= #optional post and pretransactional hooks points to a .install file
-source=('keyboard-macro::git://github.com/daemonAthena/python-linux-keyboard-macro.git')
+source=('python-linux-keyboard-macro::git+https://github.com/daemonAthena/python-linux-keyboard-macro.git')
 sha256sums=('SKIP')
 
 pkgver(){
@@ -17,12 +17,6 @@ pkgver(){
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-    cd $_name-$pkgver
-    python -m build --wheel --no-isolation
-}
-
 package() {
-    cd $_name-$pkgver
-    python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm755 ./keyboard_macro.py "$pkgdir/usr/bin/keyboard-macro"
 }
