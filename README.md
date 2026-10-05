@@ -18,3 +18,5 @@ to disable the program simply press `alt + l` again to toggle it off or kill the
 ## Future plans
 In the future I would like to make this a daemon that runs in the background instead of
 a binary explicitly called by the user. This project is very much in the testing phase.
+
+Adjust macro code to have a button which serves as an indicator "Im pressing this as a new button to repeat"
